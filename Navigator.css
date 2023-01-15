@@ -26,3 +26,8 @@
 .navDiv ul li{
     padding : 1rem;
 }
+
+.navDiv ul li a{
+    text-decoration: none;
+    color : black;
+}
