@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import './Navigator.css';
+import './RestaurantCard.css';
 
-
-const Body = () => <h2>This is the body</h2>
 const Footer = () => <h3>Footer</h3>
 
 // creating a navigator component 
@@ -26,6 +25,37 @@ const Navigator = () => {
                     <li><a href="#">Cart</a></li>
                 </ul>
             </div>
+        </div>
+    )
+}
+
+// Creating content in the body 
+
+/*
+    Body has some restaurant cards 
+        restaurant card contains
+            - Image 
+            - Food Name
+            - Restaurant Name
+            - Ratings
+*/
+
+const RestaurantCard = () => {
+    return (
+        <div className="RestaurantCard">
+            <img style={{height : '150px', width : '250px'}}
+            src= 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2019_21/2870431/190524-classic-american-cheeseburger-ew-207p.jpg'/>
+            <h2>Burger King</h2>
+            <h2>Burgers, American</h2>
+            <h2>4.2 STARS</h2>
+        </div>
+    )
+}
+
+const Body = () => {
+    return (
+        <div>
+            <RestaurantCard/>
         </div>
     )
 }
