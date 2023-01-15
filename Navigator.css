@@ -1,0 +1,28 @@
+*,*:before,*:after{
+    margin : 0rem;
+    padding : 0rem;
+    box-sizing : border-box;
+}
+
+.navDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border : 1px solid black;
+}
+
+.navDiv img{
+    display: block;
+    width : 150px;
+    height : 80px;
+    margin-left : 1rem;
+}
+
+.navDiv ul{
+    list-style: none;
+    display: flex;
+}
+
+.navDiv ul li{
+    padding : 1rem;
+}
