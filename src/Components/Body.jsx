@@ -1,7 +1,8 @@
 import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
 
 /*
     In order to create a local state variable we need to use the functionality of hooks.
@@ -28,32 +29,60 @@ const filteredRestaurants = (restaurants,searchFood) => {
 
 const Body = () => {
     // let const example = 10 //(This is a normal way to initialize a variable in javascript)
-
+    
     const [searchFood, setSearchFood] = useState();
-    const [restaurants, setrestaurantList] = useState(restaurantList);
+    const [restaurants, setrestaurantList] = useState([]);
     /*
         useState function returns us the array and it gives back two things.
         we need to destructure those two things 
     */
 
-    return (
-        <>
-        <input 
-            type= "text" 
-            placeholder="search food" 
-            style={{margin : '1rem'}}
-            value = {searchFood}
-            onChange = {(e) => setSearchFood(e.target.value)}
-        />
-        <button onClick={() => {
-            setrestaurantList(filteredRestaurants(restaurantList,searchFood));
-        }}>search</button>
-        <div className="cardContainer">
-            {
-                restaurants.map((restaurant) => <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>)
-            }
+    /*
+        When our page loads well call an API and we will fill the data.
+        How we do it in react applications ?
+        ans) There are two ways to call an API 
+        -> Loads the page -> Make an api call -> render the page
+        -> Loads the page -> Show an initial page -> Make an api call -> update the page (good way)
+
+        useEffect() is a react hook that is used to make api calls
+
+        call back function inside the useEffect function will the called after component renders 
+    */
+
+    async function getRestaurants(){
+        const info = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4707019&lng=70.05773&page_type=DESKTOP_WEB_LISTING");
+        const json = await info.json();
+        setrestaurantList(json?.data?.cards[0]?.data?.data?.cards);
+    }
+
+    useEffect(() => {
+        // MAKE AN API CALL OVER HERE 
+        getRestaurants();
+    },[])
+
+    /*
+        useEffect takes two parameters. One is call back function and the other is dependency array.
+        Call back function is called when the thing inside the dependency array changes.
+        If the dependency array is empty then the useEffect is called only once.
+    */
+    return restaurants.length === 0 ? <Shimmer/> : (
+        <div>
+            <input 
+                type= "text" 
+                placeholder="search food" 
+                style={{margin : '1rem'}}
+                value = {searchFood}
+                onChange = {(e) => setSearchFood(e.target.value)}
+            />
+            <button onClick={() => {
+                setrestaurantList(filteredRestaurants(restaurantList,searchFood));
+            }}>search</button>
+            <div className="cardContainer">
+                {
+                    restaurants.map((restaurant) => <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>)
+                }
+            </div>
         </div>
-        </>
     )
 }
 
