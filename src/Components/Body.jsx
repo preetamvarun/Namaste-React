@@ -56,8 +56,8 @@ const Body = () => {
             Initially, set both filteredRestaurants and allRestaurants to all the restaurants
             that we get from the API call.
         */
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-        setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+        setFilteredRestaurants(json?.data?.cards[0]?.data?.data?.cards);
+        setAllRestaurants(json?.data?.cards[0]?.data?.data?.cards);
     }
 
     useEffect(() => {
@@ -90,8 +90,7 @@ const Body = () => {
             }}>search</button>
 
             {
-                filteredRestaurants.length === 0 ? <p>No restaurants available</p>
-                : 
+                filteredRestaurants.length === 0 ? <p> No restaurants available </p> : 
                 <div className="cardContainer">
                     {
                         filteredRestaurants.map((restaurant) => <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>)

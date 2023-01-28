@@ -1,0 +1,9 @@
+.Shimmer-div{
+    height : 200px;
+    width : 180px;
+    background-color: rgb(153, 141, 141);
+    margin : 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

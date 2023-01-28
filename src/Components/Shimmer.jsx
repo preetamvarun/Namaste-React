@@ -1,6 +1,11 @@
+
+import './Shimmer.css';
+
 const Shimmer = () => {
     return (
-        <p>Shimmer UI is loading..</p>
+        <div style={{display : 'flex', flexWrap : 'wrap', justifyContent : 'center', alignItems : 'center', marginTop : '2rem'}}>
+            {Array(15).fill('').map((m) => <div className='Shimmer-div'></div>)}
+        </div>
     )
 }
 
