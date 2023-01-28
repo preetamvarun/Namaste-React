@@ -1,5 +1,5 @@
 import './Navigator.css';
-
+import { useState } from "react";
 
 // creating a navigator component 
 
@@ -10,6 +10,8 @@ import './Navigator.css';
 */
 
 const Navigator = () => {
+    const [IsLoggedIn,setIsLoggedIn] = useState(true);
+    { /* You can only write javascript expressions not statments inside curly braces */}
     return(
         <div className="navDiv">
             <img src={require("./foodvilla.png")} alt = "Food Villa"/>
@@ -21,6 +23,8 @@ const Navigator = () => {
                     <li><a href="#">Cart</a></li>
                 </ul>
             </div>
+            {IsLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Logout</button> : 
+            <button onClick={() => setIsLoggedIn(true)}>Login</button>}
         </div>
     )
 }

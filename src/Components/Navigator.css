@@ -31,3 +31,8 @@
     text-decoration: none;
     color : black;
 }
+
+.navDiv button{
+    margin-right : 2rem;
+    padding : .5rem .75rem;
+}
