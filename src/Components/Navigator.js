@@ -25,8 +25,8 @@ const Navigator = () => {
                     by react-dom-router */}
                     {/* <li><a href="/about">About</a></li> */}
                     <li><Link to = "/about">About</Link></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><Link to= "/contact">Contact Us</Link></li>
+                    <li><Link to = "/cart">Cart</Link></li>
                 </ul>
             </div>
             {IsLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Logout</button> : 
