@@ -1,5 +1,6 @@
 import './Navigator.css';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // creating a navigator component 
 
@@ -17,8 +18,13 @@ const Navigator = () => {
             <img src={require("./foodvilla.png")} alt = "Food Villa"/>
             <div>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/about">About</a></li>
+                    <li><Link to = "/">Home</Link></li>
+                    {/* Below when we use anchor tags the problem is It reloads the page.
+                    As react used to build single page applications we need to do client side routing (It will not make any network calls).
+                    It basically doesn't reload the page. So, for that we use Link Tag which is provided
+                    by react-dom-router */}
+                    {/* <li><a href="/about">About</a></li> */}
+                    <li><Link to = "/about">About</Link></li>
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Cart</a></li>
                 </ul>
