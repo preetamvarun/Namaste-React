@@ -6,15 +6,16 @@ import Body from "./Components/Body";
 import About from "./Components/About";
 import {Error} from "./Components/Error";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 
 const Applayout = () => {
     return (
-        <>
+        <React.Fragment>
             <Navigator/>
             <Body/>
             <Footer/>
-        </>
+        </React.Fragment>
     )
 }
 
