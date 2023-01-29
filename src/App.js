@@ -10,7 +10,7 @@ import { RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Cart from "./Components/Cart";
 import Contact from "./Components/Contact";
-
+import RestaurantMenu from "./Components/RestaurantMenu";
 
 const Applayout = () => {
     return (
@@ -44,17 +44,13 @@ const appRouter = createBrowserRouter([
             {
                 path : "/cart",
                 element : <Cart/>
+            },
+            {
+                path : "/restaurant/:id",
+                element : <RestaurantMenu/>
             }
         ]
     },
-    // {
-    //     path : "/about",
-    //     element : <About/>
-    // },
-    // {
-    //     path : "/contact",
-    //     element : <Contact/>
-    // }
 ])
 
 
