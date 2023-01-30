@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom";
 
 /*
     In order to create a local state variable we need to use the functionality of hooks.
@@ -93,7 +93,11 @@ const Body = () => {
                 filteredRestaurants.length === 0 ? <p> No restaurants available </p> : 
                 <div className="cardContainer">
                     {
-                        filteredRestaurants.map((restaurant) => <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>)
+                        filteredRestaurants.map((restaurant) => 
+                        <Link to = {"restaurant/" + restaurant.data.id} style = {{textDecoration : 'none', color : 'black'}}>
+                            <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>
+                        </Link>
+                        )
                     }
                 </div>
             }
