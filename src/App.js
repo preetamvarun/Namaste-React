@@ -10,6 +10,7 @@ import { RouterProvider } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Cart from "./Components/Cart";
 import Contact from "./Components/Contact";
+import Profile from "./Components/Profile";
 import RestaurantMenu from "./Components/RestaurantMenu";
 
 const Applayout = () => {
@@ -22,6 +23,15 @@ const Applayout = () => {
     )
 }
 
+/*
+    Applayout is the parent component for so and so child components. So, the parent component 
+    here which is app layout component should have an outlet component which is imported from
+    react-router-dom. In the same way, the about component which is the parent component for the
+    profile component need to have an outlet so, that the profile component can render accordingly.
+
+    Dont' specity /profile as path because react assumes /profile. But we want /about/profile.
+    So, just mention the name i.e., profile
+*/
 
 const appRouter = createBrowserRouter([
     {
@@ -31,7 +41,13 @@ const appRouter = createBrowserRouter([
         children : [
             {
                 path : "/about",
-                element : <About/>
+                element : <About/>,
+                children : [
+                    {
+                        path : "profile",
+                        element : <Profile/>
+                    }
+                ]
             },
             {
                 path : "contact",
