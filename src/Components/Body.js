@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+import filterRestaurants from "../Utils/helper";
 
 /*
     In order to create a local state variable we need to use the functionality of hooks.
@@ -20,11 +21,6 @@ import {Link} from "react-router-dom";
             - Restaurant Name
             - Ratings
 */
-
-const filterRestaurants = (restaurants,searchFood) => {
-    const filteredData = restaurants.filter((restaurant) => restaurant?.data?.name?.toLowerCase()?.includes(searchFood.toLowerCase()));
-    return filteredData;
-}
 
 const Body = () => {
     // let const example = 10 //(This is a normal way to initialize a variable in javascript)
