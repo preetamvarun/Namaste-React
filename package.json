@@ -6,7 +6,7 @@
     "react-router-dom": "^6.8.0"
   },
   "scripts": {
-    "ANR": "parcel index.html"
+    "start": "parcel index.html"
   },
   "devDependencies": {
     "process": "^0.11.10"
