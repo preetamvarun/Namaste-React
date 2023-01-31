@@ -2,7 +2,9 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
-import filterRestaurants from "../Utils/helper";
+import filterRestaurants from "../Utils/filterRestaurants.js";
+
+import useShowAllRestaurants from "../Utils/useShowAllRestaurants";
 
 /*
     In order to create a local state variable we need to use the functionality of hooks.
@@ -26,46 +28,15 @@ const Body = () => {
     // let const example = 10 //(This is a normal way to initialize a variable in javascript)
     
     const [searchFood, setSearchFood] = useState();
+
+    const allRestaurants = useShowAllRestaurants();
+
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-    const [allRestaurants, setAllRestaurants] = useState([]);
-
-    /*
-        useState function returns us the array and it gives back two things.
-        we need to destructure those two things 
-    */
-
-    /*
-        When our page loads well call an API and we will fill the data.
-        How we do it in react applications ?
-        ans) There are two ways to call an API 
-        -> Loads the page -> Make an api call -> render the page
-        -> Loads the page -> Show an initial page -> Make an api call -> update the page (good way)
-        useEffect() is a react hook that is used to make api calls
-        call back function inside the useEffect function will the called after component renders 
-    */
-
-    async function getRestaurants(){
-        const info = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4707019&lng=70.05773&page_type=DESKTOP_WEB_LISTING");
-        const json = await info.json();
-        
-        /*
-            Initially, set both filteredRestaurants and allRestaurants to all the restaurants
-            that we get from the API call.
-        */
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-        setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    }
 
     useEffect(() => {
-        // MAKE AN API CALL OVER HERE 
-        getRestaurants();
-    },[])
+        setFilteredRestaurants(allRestaurants);
+    }, [allRestaurants]);
 
-    /*
-        useEffect takes two parameters. One is call back function and the other is dependency array.
-        Call back function is called when the thing inside the dependency array changes.
-        If the dependency array is empty then the useEffect is called only once.
-    */
 
     // return filteredRestaurants    
     return allRestaurants.length === 0 ? <Shimmer/> : (
@@ -90,8 +61,8 @@ const Body = () => {
                 <div className="cardContainer">
                     {
                         filteredRestaurants.map((restaurant) => 
-                        <Link to = {"restaurant/" + restaurant.data.id} style = {{textDecoration : 'none', color : 'black'}}>
-                            <RestaurantCard {...restaurant.data} key = {restaurant.data.id}/>
+                        <Link to = {"restaurant/" + restaurant.data.id} key = {restaurant.data.id} style = {{textDecoration : 'none', color : 'black'}}>
+                            <RestaurantCard {...restaurant.data}/>
                         </Link>
                         )
                     }

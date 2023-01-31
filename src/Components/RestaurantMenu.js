@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import { IMG_CDN_URL } from "../config";
+import { IMG_CDN_URL } from "../Utils/config";
 import Shimmer from "./Shimmer";
 import useShowRestaurant from "../Utils/useShowRestaurant";
 
