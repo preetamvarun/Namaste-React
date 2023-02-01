@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import filterRestaurants from "../Utils/filterRestaurants.js";
 
 import useShowAllRestaurants from "../Utils/useShowAllRestaurants";
@@ -25,10 +25,14 @@ import useShowAllRestaurants from "../Utils/useShowAllRestaurants";
 */
 
 const Body = () => {
+
+    if(!navigator.onLine) return <h1>You are currently offline</h1>
+
     // let const example = 10 //(This is a normal way to initialize a variable in javascript)
-    
     const [searchFood, setSearchFood] = useState();
 
+
+    /* Created a custom hook that generates all the restaurants */
     const allRestaurants = useShowAllRestaurants();
 
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);

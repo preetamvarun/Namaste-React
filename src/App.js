@@ -12,6 +12,7 @@ import Cart from "./Components/Cart";
 import Contact from "./Components/Contact";
 import Profile from "./Components/Profile";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import Instamart from "./Components/Instamart";
 
 const Applayout = () => {
     return (
@@ -64,6 +65,10 @@ const appRouter = createBrowserRouter([
             {
                 path : "/restaurant/:id",
                 element : <RestaurantMenu/>
+            },
+            {
+                path : "/instamart",
+                element : <Instamart/>
             }
         ]
     },

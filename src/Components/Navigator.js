@@ -27,6 +27,7 @@ const Navigator = () => {
                     <li><Link to = "/about">About</Link></li>
                     <li><Link to= "/contact">Contact Us</Link></li>
                     <li><Link to = "/cart">Cart</Link></li>
+                    <li><Link to = "/instamart">Instamart</Link></li>
                 </ul>
             </div>
             {IsLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Logout</button> : 
