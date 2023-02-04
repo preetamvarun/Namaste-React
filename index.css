@@ -1,4 +1,16 @@
 /*
- In this project we are going to use tailwind css
- 
+Tailwind css is a css framework - It is open source 
+
+write css on the game 
+less bundle size as it is minimal css it offers to us. Very low level compared to bootstrap & Materialize 
+We can build flexible UI i.e., it is very much customizable
+Reusability
+
+cntr + spacebar for tailwind extension to show suggestions
+
+Try to stick to native tailwind classes
+
+pros of tailwind - less code, easy to debug, no duplicate css, bundle size is small, faster dev experience, more customizable 
+
+cons - It comes with a learning curve
 */
