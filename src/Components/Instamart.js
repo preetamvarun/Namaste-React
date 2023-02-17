@@ -1,9 +1,11 @@
+import { useState } from 'react';
+
 const Instamart = () => {
-    return (
-        <div>
-            <p>Assume this component is very big with 100's of components</p>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>Instamart page</h1>
+    </div>
+  );
+};
 
 export default Instamart;
