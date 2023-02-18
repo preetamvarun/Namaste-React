@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Navigator from './Components/Navigator';
 import Footer from './Components/Footer';
@@ -12,6 +12,7 @@ import Cart from './Components/Cart';
 import Contact from './Components/Contact';
 import Profile from './Components/Profile';
 import RestaurantMenu from './Components/RestaurantMenu';
+import UserContext from './Utils/UserContext';
 
 /* 
 Since this Instamart component is huge in size.. we would like to import it dynamically.
@@ -45,11 +46,17 @@ const Instamart = lazy(() => import('./Components/Instamart'));
 /* The import key word we used above is not the import that we do on top of the file */
 
 const Applayout = () => {
+  const [user, setUser] = useState({
+    name: 'preetam',
+    email: 'preetamvarun1024@gmail.com',
+  });
   return (
     <React.Fragment>
       <Navigator />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </React.Fragment>
   );
 };
