@@ -47,8 +47,8 @@ const Instamart = lazy(() => import('./Components/Instamart'));
 
 const Applayout = () => {
   const [user, setUser] = useState({
-    name: 'preetam',
-    email: 'preetamvarun1024@gmail.com',
+    name: 'preet',
+    email: 'preet@gmail.com',
   });
   return (
     <React.Fragment>

@@ -37,7 +37,6 @@ const Body = () => {
     });
   };
 
-  // return filteredRestaurants
   return allRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
