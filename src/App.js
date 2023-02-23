@@ -13,6 +13,8 @@ import Contact from './Components/Contact';
 import Profile from './Components/Profile';
 import RestaurantMenu from './Components/RestaurantMenu';
 import UserContext from './Utils/UserContext';
+import { Provider } from 'react-redux';
+import store from './Utils/store';
 
 /* 
 Since this Instamart component is huge in size.. we would like to import it dynamically.
@@ -52,11 +54,14 @@ const Applayout = () => {
   });
   return (
     <React.Fragment>
-      <Navigator />
-      <UserContext.Provider value={{ user: user, setUser: setUser }}>
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      {/* providing store to the entire app */}
+      <Provider store={store}>
+        <Navigator />
+        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+          <Outlet />
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </React.Fragment>
   );
 };
