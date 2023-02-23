@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import UserContext from '../Utils/UserContext';
+import { useSelector } from 'react-redux';
 
 // creating a navigator component
 
@@ -19,6 +20,10 @@ const Navigator = () => {
   }
 
   const { user } = useContext(UserContext);
+
+  /*This hook gives access to the store directly*/
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className='navDiv'>
@@ -41,6 +46,7 @@ const Navigator = () => {
           </li>
           <li>
             <Link to='/cart'>Cart</Link>
+            <span> - {cartItems.length}</span>
           </li>
           <li>
             <Link to='/instamart'>Instamart</Link>
